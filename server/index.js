@@ -50,15 +50,17 @@ io.on("connection", (socket) => {
   });
 
   socket.on("startGoogleCloudStream", function (data) {
-    startRecognitionStream(this, data);
+    console.log("** starting google cloud stream **\n");
+    //startRecognitionStream(this, data);
   });
 
   socket.on("endGoogleCloudStream", function () {
     console.log("** ending google cloud stream **\n");
-    stopRecognitionStream();
+    //stopRecognitionStream();
   });
 
   socket.on("send_audio_data", async (audioData) => {
+    console.log("received audio data");
     io.emit("receive_message", "Got audio data");
     if (recognizeStream !== null) {
       try {

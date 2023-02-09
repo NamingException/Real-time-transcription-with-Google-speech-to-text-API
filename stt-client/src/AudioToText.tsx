@@ -108,6 +108,7 @@ const AudioToText: React.FC = () => {
         audioInputRef.current.connect(processorRef.current);
 
         processorRef.current.port.onmessage = (event: any) => {
+          console.log("sending audio data")
           const audioData = event.data;
           connection.emit("send_audio_data", { audio: audioData });
         };
